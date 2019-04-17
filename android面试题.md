@@ -1,10 +1,10 @@
 
 *  <h3>synchronized与Lock的区别</h3>
-	* 首先synchronized是java内置关键字，在jvm层面，Lock是个java类<br></br>
+	* 首先synchronized是java内置关键字，在jvm层面，Lock是个java类
 	* synchronized无法判断是否获取锁的状态，Lock可以判断是否获取到锁<br></br>
-	* synchronized会自动释放锁(a 线程执行完同步代码会释放锁 ；b 线程执行过程中发生异常会释放锁)，Lock需在finally中手工释放锁（unlock()方法释放锁），否则容易造成线程死锁 <br></br>
+	* synchronized会自动释放锁(a 线程执行完同步代码会释放锁 ；b 线程执行过程中发生异常会释放锁)，Lock需在finally中手工释放锁（unlock()方法释放锁），否则容易造成线程死锁 
 	* 用synchronized关键字的两个线程1和线程2，如果当前线程1获得锁，线程2线程等待。如果线程1阻塞，线程2则会一直等待下去，而Lock锁就不一定会等待下去，如果尝试获取不到锁，线程可以不用一直等待就结束了；<br></br>
-	* synchronized的锁可重入、不可中断、非公平，而Lock锁可重入、可判断、可公平（两者皆可）<br></br>
+	* synchronized的锁可重入、不可中断、非公平，而Lock锁可重入、可判断、可公平（两者皆可）
 	* Lock锁适合大量同步的代码的同步问题，synchronized锁适合代码少量的同步问题。<br></br>
 
 * <h3>Handler机制如何保证消息不错乱？</h3>
@@ -198,11 +198,11 @@ public enum SingleInstance {
 	*	方式一：可以获取到jar的源码或者将jar反编译获取到java项目，然后替换掉自己想要的.java文件或者方法；
 	*	方式二：可以通过类加载器将目标class替换成自己的class；<br></br>
 * <h3>Android开发过程中的版本适配问题？</h3>
-		* - Android4.4适配：uri转path需要适配
-		* - Android5.0适配：分包适配 -〉在5.0及以上在app的gradle文件中配置multiDexEnabled true即可，但是5.0以下需要倒入jar，然后在Application的attch方法中进行初始化
-		* - Android6.0：权限适配 -〉敏感权限动态申请；
-		* - Android7.0：Uri.fromFile()适配 -〉使用FileProvider进行适配；Android出于安全考虑关闭了网络/拍照/录像系统广播；
-		* - Android8.0:Service启动方式适配 -〉需要使用startForegroundService()启动服务；Notification适配 -〉添加了渠道和组的概念；
-		* 软件安装适配 -〉Android8.0去掉了“允许未知来源”选项，需要用户手动确定，所以安装程序需要在AndroidManifest.xml文件中添加REQUEST_INSTALL_PACKAGES权限；广播适配 -〉AndroidManifest.xml中注册的广播不能使用隐式，需要明确指定。权限适配-〉读写权限分离
-		* 8.0 如小米 华为 oppo vivo 根据官网来适配刘海屏(凹凸屏)，9.0根据google来的规则适配刘海屏(凹凸屏)
-		* Android9.0 如果网络请求url不是https的需要做适配
+	* - Android4.4适配：uri转path需要适配
+	* - Android5.0适配：分包适配 -〉在5.0及以上在app的gradle文件中配置multiDexEnabled true即可，但是5.0以下需要倒入jar，然后在Application的attch方法中进行初始化
+	* - Android6.0：权限适配 -〉敏感权限动态申请；
+	* - Android7.0：Uri.fromFile()适配 -〉使用FileProvider进行适配；Android出于安全考虑关闭了网络/拍照/录像系统广播；
+	* - Android8.0:Service启动方式适配 -〉需要使用startForegroundService()启动服务；Notification适配 -〉添加了渠道和组的概念；
+	* 软件安装适配 -〉Android8.0去掉了“允许未知来源”选项，需要用户手动确定，所以安装程序需要在AndroidManifest.xml文件中添加REQUEST_INSTALL_PACKAGES权限；广播适配 -〉AndroidManifest.xml中注册的广播不能使用隐式，需要明确指定。权限适配-〉读写权限分离
+	* 8.0 如小米 华为 oppo vivo 根据官网来适配刘海屏(凹凸屏)，9.0根据google来的规则适配刘海屏(凹凸屏)
+	* Android9.0 如果网络请求url不是https的需要做适配
