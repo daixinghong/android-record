@@ -45,7 +45,7 @@ IO面向流意味着每次从流中读一个或多个字节，直至读取所有
 * <h3>单例模式有几种写法以及各自的优劣？</h3>
 	* 1.饿汉式：
 	<pre class="prettyprint lang-javascript">
-	public class SingleInstance {
+public class SingleInstance {
     
     private static SingleInstance mInstance = new SingleInstance();
     
@@ -59,7 +59,7 @@ IO面向流意味着每次从流中读一个或多个字节，直至读取所有
 	</pre> 
 		* 缺点：存在内存损耗问题，如果当前类没有用到也会被实例化
 	*懒汉式：
-	<pre class="prettyprint lang-javascript">
+<pre class="prettyprint lang-javascript">
 	public class SingleInstance {
 
     private static SingleInstance mInstance = null;
@@ -86,7 +86,7 @@ IO面向流意味着每次从流中读一个或多个字节，直至读取所有
 		第二次判空是因为，如果a，b两个线程都到了synchronized处，而假设a拿到了锁，进入到代码块中创建了对象，然后释放了锁，由于b线程在等待锁，所以a释放后，会被b拿到，因此此时判空就保证了实例的唯一性。<br></br>
 
 	*静态内部类：
-	<pre class="prettyprint lang-javascript">
+<pre class="prettyprint lang-javascript">
 public class SingleInstance {
 
     
@@ -108,7 +108,7 @@ public class SingleInstance {
 		因为类加载过程是安全的，而静态变量是随着类的加载进行初始化的。
 	* 4.枚举形式：
 	<pre class="prettyprint lang-javascript">
-	public enum SingleInstance {
+public enum SingleInstance {
     
         INSTANCE;
     
