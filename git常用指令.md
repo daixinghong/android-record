@@ -15,4 +15,4 @@
 * git brach //查看分支
 * git brach -d dev1 删除dev1分支
 * git cherry-pick 分支合并分支
-* git pop 把暂存内容拿出来
+* git stash pop 把暂存内容拿出来
