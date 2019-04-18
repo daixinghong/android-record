@@ -43,7 +43,7 @@ IO面向流意味着每次从流中读一个或多个字节，直至读取所有
 	* 一个线程请求写入一些数据到某通道，但不需要等待它完全写入，这个线程同时可以去做别的事情。 线程通常将非阻塞IO的空闲时间用于在其它通道上执行IO操作，所以一个单独的线程现在可以管理多个输入和输出通道<br></br>
 	
 * <h3>单例模式有几种写法以及各自的优劣？</h3>
-	* 1.饿汉式：
+	* 饿汉式：
 <pre class="prettyprint lang-javascript">
 	public class SingleInstance {
     
@@ -58,7 +58,7 @@ IO面向流意味着每次从流中读一个或多个字节，直至读取所有
 
 </pre> 
 		* 缺点：存在内存损耗问题，如果当前类没有用到也会被实例化
-	*懒汉式：
+* 懒汉式：
 <pre class="prettyprint lang-javascript">
 	public class SingleInstance {
 
