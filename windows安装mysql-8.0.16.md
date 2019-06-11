@@ -44,21 +44,21 @@
 * 执行命令: mysqld --initialize --console ，红色框内是数据库初始密码，保存起来，修改密码时需要用
 	* ![](https://i.imgur.com/tRnjXBx.png)
 * 安装mysql服务，执行命令：mysqld --install
-	* ![](https://i.imgur.com/xBlvj0d.png)
+	 ![](https://i.imgur.com/S1nAR3n.png)
 	* 如果出现下面这个情况，说明mysql服务已经存在
-		* ![](https://i.imgur.com/tp6vZMW.png)
+		 * ![](https://i.imgur.com/tp6vZMW.png)
 	* 使用命令:sc delete mysql  出现如下图说明删除成功
-		* ![](https://i.imgur.com/hWjPKBO.png)
+		 * ![](https://i.imgur.com/hWjPKBO.png)
 	* 再执行安装服务命令: mysqld --install  出现如下图则安装成功
-		* ![](https://i.imgur.com/Z7YGvAX.png)
+		 * ![](https://i.imgur.com/Z7YGvAX.png)
 
 * 启动mysql数据库服务
 	* 执行命令:net start mysql  出现如下图则启动成功
-		* ![](https://i.imgur.com/q6b30oP.png)
+		 * ![](https://i.imgur.com/q6b30oP.png)
 * 连接数据库 使用navicat工具 账号:root  密码就是最开始初始化时的初始密码
-	* ![](https://i.imgur.com/MiYebzt.png)
+	 ![](https://i.imgur.com/MiYebzt.png)
 * 如果出现如下图错误
-	* ![](https://i.imgur.com/qbwv47D.png)
+	 ![](https://i.imgur.com/qbwv47D.png)
     	* 我的解决办法就是修改数据库密码  在命令行执行命令: mysqladmin -uroot -p原密码 password 新密码
     	* 修改成功后使用新密码登陆数据库
 	    	* ![](https://i.imgur.com/lbZH5I8.png)
