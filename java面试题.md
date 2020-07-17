@@ -45,7 +45,13 @@
 	* 反向遍历进行字符串拼接
 	
 * <h3>String 类的常用方法都有那些？</h3>
-	* equals() length() indexOf() lastIndexOf() subString() replace()  replaceAll()
+	* equals()
+	* length() 
+	* indexOf() 
+	* lastIndexOf() 
+	* subString() 
+	* replace()  
+	* replaceAll()
 
 * <h3>抽象类必须要有抽象方法吗？</h3>
 	* 不一定
@@ -82,14 +88,16 @@
   			   <td>Map(映射)</td>
 	        </tr>
 	        <tr>
-	            <td>有序的</td>
-	            <td>无序的</td>
+		<td>继承Collection接口</td>
+	       <td>继承Collection接口</td>
 				<td>不继承Collection接口</td>
 	        </tr>
 	  <tr>
 	            <td>可以存重复的元素</td>
 	            <td>不可存重复的元素</td>
 	        </tr>
+		<tr>    <td>有序的</td>
+	            <td>无序的</td></tr>
 	 </table>
 
 
@@ -121,7 +129,6 @@
 * <h3>说一下 HashSet的实现原理</h3>
 	* HashSet是基于HashMap实现的，HashSet 底层使用HashMap来保存所有元素
 	* HashSet是不允许存储重复值，并且他是无序的
-	* 
 * <h3>ArrayList 和 LinkedList 的区别是什么？</h3>
 	   <table>
 	       <tr>
@@ -159,8 +166,8 @@
 	            <td>线程安全</td>
 	        </tr>
 	  <tr>
+	            <td>当ArrayList中的元素超过它的初始大小时,ArrayList只会增加当前容量的百分之50</td>
 	            <td>当Vector中的元素超过它的初始大小时,Vector会将它的容量翻倍</td>
-	            <td>当Vector中的元素超过它的初始大小时,Vector会将它的容量增加百分之50</td>
 	        </tr>
 	 </table>
 * <h3>Array 和 ArrayList 有何区别</h3>
@@ -209,4 +216,92 @@
 	* Collections.unmodifiableSet(Set)		
 
 # java多线程
-	
+* <h3>并行和并发有什么区别？</h3>
+	* 并发：指的是一个处理器在不同的时间段处理多个的请求
+	* 并行：多个处理器在同时处理多个请求
+
+* <h3>线程和进程的区别</h3>
+	* 进程：是操作系统最基本的单元，一个应用只有一个进程
+	* 线程：线程是运行在进程上的，一个进程可以有多个线程
+
+* <h3>守护线程是什么？</h3>
+	* 通常来说，守护线程经常被用来执行一些后台任务，但是呢，你又希望在程序退出时，或者说 JVM 退出时，线程能够自动关闭，此时，守护线程是你的首选
+
+* <h3>创建线程有哪几种方式？</h3>
+	* 4种
+		* new Thread().start();
+		* new Runable();
+		* 线程池
+		* Callable
+
+* <h3>说一下 runnable 和 callable 有什么区别？</h3>
+	* Runnable执行方法是run(),Callable是call()
+	* 实现Runnable接口的任务线程无返回值；实现Callable接口的任务线程能返回执行结果
+	* call方法可以抛出异常，run方法若有异常只能在内部消化
+
+* <h3>线程有哪些状态？</h3>
+	* 5种
+		* 新建 （创建了Thread线程）
+		* 就绪 （调用的start方法不代表就开始运行程序了，运行程序不是代码控制的，而是操作系统控制的）
+		* 运行 （当cpu已经在运行这条程序的时候就是运行中了）
+		* 阻塞 （当子线程遇到同步锁，sleep ，wait，就会进入阻塞状态）
+		* 死亡 （当线程把代码执行完成之后就死亡了）
+
+* <h3>sleep() 和 wait() 有什么区别？</h3>
+	* sleep() 睡眠，不需要唤醒，到时间自动被唤醒，wait()则需要notify或者notifyAll方法
+	* sleep() 不会释放锁，如果你在Synchronized同步代码块中执行sleep()方法，其他线程仍然无法获取到对象锁
+
+* <h3>notify()和 notifyAll()有什么区别？</h3>
+	* notify就是唤醒一条线程从等待池中进入锁池
+	* notifyAll是唤醒所以在等待池中的线程进入锁池
+
+
+* <h3>线程的 run()和 start()有什么区别？</h3>
+	* start()是用来启动线程的，线程要开始运行的时候会自动调用run()方法，
+	* 一个线程对start()方法只能调用一次，run()可以调用多次
+* <h3>创建线程池有哪几种方式？</h3>
+	* 4种
+		* newCachedThreadPool 
+		* newFixedThreadPool 
+		* newScheduledThreadPoo
+		* newSingleThreadExecutor 
+
+* <h3>线程池都有哪些状态？</h3>
+	* 5种状态
+		* RUNNING  
+			* 线程池处在RUNNING状态时，能够接收新任务，以及对已添加的任务进行处理。 
+			* 线程池的初始化状态是RUNNING。换句话说，线程池被一旦被创建，就处于RUNNING状态，并且线程池中的任务数为0！
+		* SHUTDOWN
+			* 线程池处在SHUTDOWN状态时，不接收新任务，但能处理已添加的任务。
+			* 调用线程池的shutdown()接口时，线程池由RUNNING -> SHUTDOWN。
+		* STOP
+			* 线程池处在STOP状态时，不接收新任务，不处理已添加的任务，并且会中断正在处理的任务
+			* 调用线程池的shutdownNow()接口时，线程池由(RUNNING or SHUTDOWN ) -> STOP。
+		* TIDYING
+			* 当所有的任务已终止，ctl记录的”任务数量”为0，线程池会变为TIDYING状态。当线程池变为TIDYING状态时，会执行钩子函数terminated()。terminated()在ThreadPoolExecutor类中是空的，若用户想在线程池变为TIDYING时，进行相应的处理；可以通过重载terminated()函数来实现
+			* 当线程池在SHUTDOWN状态下，阻塞队列为空并且线程池中执行的任务也为空时，就会由 SHUTDOWN -> TIDYING。 
+		* TERMINATED
+			* 线程池彻底终止，就变成TERMINATED状态
+			* 线程池处在TIDYING状态时，执行完terminated()之后，就会由 TIDYING -> TERMINATED。
+
+* <h3>线程池中 submit()和 execute()方法有什么区别？</h3>
+	* submit和execute都是往线程池里面提交任务
+	* submit没有返回值，execute有返回值
+	* execute可以根据返回值查看任务执行结果，如果任务执行失败，可以获取到执行失败的异常
+
+* <h3>在 java 程序中怎么保证多线程的运行安全？</h3>
+	* 原子性：一个或者多个操作在 CPU 执行的过程中不被中断的特性
+	* 可见性：一个线程对共享变量的修改，另外一个线程能够立刻看到
+	* 有序性：程序执行的顺序按照代码的先后顺序执行
+		* 导致原因：
+			* 缓存导致的可见性问题
+			* 线程切换带来的原子性问题
+			* 编译优化带来的有序性问题
+		* 解决办法：
+			* JDK Atomic开头的原子类、synchronized、LOCK，可以解决原子性问题
+			* synchronized、volatile、LOCK，可以解决可见性问题
+			* Happens-Before 规则可以解决有序性问题
+		
+				
+		
+		
